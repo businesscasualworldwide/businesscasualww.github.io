@@ -3,741 +3,1196 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Business Casual — Book a Strategy Session</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<title>Business Casual — Clarity First</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
 <style>
   :root {
-    --ink: #111111;
-    --paper: #fafaf8;
-    --accent: #1a472a;
-    --accent-light: #2d6a42;
-    --warm: #c8522a;
-    --muted: #777770;
-    --border: #e0ddd8;
-    --card: #ffffff;
+    --black: #0a0a0a;
+    --dark: #111111;
+    --dark-2: #181818;
+    --dark-3: #222222;
+    --white: #f5f0eb;
+    --off-white: #ccc5bb;
+    --gray: #7a7370;
+    --accent: #c8a97e;
+    --accent-dim: rgba(200,169,126,0.15);
+    --accent-line: rgba(200,169,126,0.4);
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
 
   body {
-    background: var(--paper);
-    color: var(--ink);
-    font-family: 'IBM Plex Sans', sans-serif;
-    font-weight: 300;
-    line-height: 1.6;
+    background: var(--black);
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 400;
+    overflow-x: hidden;
   }
 
-  /* Nav */
+  /* ── NAV ─────────────────────────────────────────── */
   nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1.75rem 5rem;
-    border-bottom: 1px solid var(--border);
-    background: var(--paper);
-    position: sticky;
+    position: fixed;
     top: 0;
-    z-index: 10;
-    opacity: 0;
-    animation: fadeIn 0.5s ease forwards;
-  }
-
-  .logo {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.2rem;
-    color: var(--ink);
-    text-decoration: none;
-    letter-spacing: 0.02em;
-  }
-
-  .nav-right {
+    width: 100%;
+    z-index: 100;
+    padding: 20px 48px;
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    gap: 2rem;
+    background: linear-gradient(to bottom, rgba(10,10,10,0.98), transparent);
   }
 
-  .nav-tag {
-    font-size: 0.72rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--muted);
-  }
-
-  .nav-cta {
-    font-size: 0.78rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    background: var(--accent);
-    color: white;
-    padding: 0.6rem 1.4rem;
-    border-radius: 2px;
-    text-decoration: none;
-    transition: background 0.2s;
-  }
-
-  .nav-cta:hover { background: var(--accent-light); }
-
-  /* Hero */
-  .hero {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    min-height: 88vh;
-    opacity: 0;
-    animation: fadeIn 0.6s ease 0.1s forwards;
-  }
-
-  .hero-left {
-    padding: 6rem 4rem 6rem 5rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    border-right: 1px solid var(--border);
-  }
-
-  .hero-right {
-    padding: 6rem 5rem 6rem 4rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    background: var(--ink);
-    color: var(--paper);
-  }
-
-  .eyebrow {
-    font-size: 0.72rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 1.5rem;
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-  }
-
-  .eyebrow::before {
-    content: '';
-    display: block;
-    width: 1.5rem;
-    height: 1px;
-    background: var(--accent);
-  }
-
-  h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(2.2rem, 3.5vw, 3.2rem);
-    font-weight: 400;
-    line-height: 1.15;
-    margin-bottom: 2rem;
-  }
-
-  h1 em {
-    font-style: italic;
-    color: var(--warm);
-  }
-
-  .hero-body {
-    font-size: 1rem;
-    color: #555;
-    line-height: 1.8;
-    max-width: 460px;
-    margin-bottom: 2.5rem;
-  }
-
-  .hero-cta {
-    display: inline-block;
-    font-size: 0.78rem;
-    font-weight: 500;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    background: var(--accent);
-    color: white;
-    padding: 0.9rem 2rem;
-    border-radius: 2px;
-    text-decoration: none;
-    transition: background 0.2s;
-    align-self: flex-start;
-  }
-
-  .hero-cta:hover { background: var(--accent-light); }
-
-  /* Right panel */
-  .hero-right .eyebrow {
-    color: #777;
-  }
-  .hero-right .eyebrow::before { background: #555; }
-
-  .problem-label {
-    font-size: 0.72rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: #666;
-    margin-bottom: 1.5rem;
-  }
-
-  .problem-list {
-    list-style: none;
-    margin-bottom: 3rem;
-  }
-
-  .problem-list li {
-    display: flex;
-    align-items: flex-start;
-    gap: 1rem;
-    padding: 1.1rem 0;
-    border-bottom: 1px solid #1e1e1e;
-    font-size: 0.93rem;
-    line-height: 1.55;
-    color: #bbb;
-  }
-
-  .problem-list li:first-child { border-top: 1px solid #1e1e1e; }
-
-  .problem-icon {
-    color: var(--warm);
-    flex-shrink: 0;
-    margin-top: 2px;
-    font-size: 0.9rem;
-  }
-
-  /* Positioning statement */
-  .positioning {
-    border-left: 2px solid var(--warm);
-    padding-left: 1.5rem;
-  }
-
-  .positioning p {
-    font-family: 'Playfair Display', serif;
+  .nav-logo {
+    font-family: 'Bebas Neue', sans-serif;
     font-size: 1.1rem;
-    font-weight: 400;
-    line-height: 1.65;
-    color: var(--paper);
-    font-style: italic;
+    letter-spacing: 5px;
+    color: var(--white);
+    text-decoration: none;
   }
 
-  .positioning span {
-    display: block;
-    margin-top: 1rem;
-    font-family: 'IBM Plex Sans', sans-serif;
+  .nav-logo em {
+    color: var(--accent);
     font-style: normal;
-    font-size: 0.78rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: #555;
   }
 
-  /* Services */
-  .services {
-    padding: 7rem 5rem;
-    opacity: 0;
-    animation: fadeIn 0.6s ease 0.2s forwards;
-  }
-
-  .section-header {
+  .nav-links {
     display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    margin-bottom: 3rem;
-    padding-bottom: 1.5rem;
-    border-bottom: 1px solid var(--border);
-  }
-
-  .section-label {
-    font-size: 0.72rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 0.5rem;
-  }
-
-  .section-header h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: 2rem;
-    font-weight: 400;
-  }
-
-  .section-note {
-    font-size: 0.85rem;
-    color: var(--muted);
-    max-width: 280px;
-    text-align: right;
-    line-height: 1.65;
-  }
-
-  .tiers-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 1.5rem;
-  }
-
-  .tier {
-    border: 1px solid var(--border);
-    border-radius: 3px;
-    padding: 2.5rem 2rem;
-    background: var(--card);
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    transition: box-shadow 0.25s ease;
-  }
-
-  .tier:hover { box-shadow: 0 8px 32px rgba(0,0,0,0.07); }
-
-  .tier.featured {
-    border-color: var(--accent);
-    border-width: 2px;
-  }
-
-  .tier-badge {
-    position: absolute;
-    top: -13px;
-    left: 2rem;
-    background: var(--accent);
-    color: white;
-    font-size: 0.65rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    padding: 0.25rem 0.85rem;
-    border-radius: 2px;
-  }
-
-  .tier-eyebrow {
-    font-size: 0.68rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 0.75rem;
-  }
-
-  .tier-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.5rem;
-    font-weight: 400;
-    margin-bottom: 0.4rem;
-  }
-
-  .tier-tagline {
-    font-size: 0.85rem;
-    color: var(--muted);
-    margin-bottom: 1.75rem;
-    line-height: 1.5;
-  }
-
-  .tier-price {
-    font-family: 'Playfair Display', serif;
-    font-size: 2.5rem;
-    font-weight: 600;
-    color: var(--ink);
-    margin-bottom: 2rem;
-    line-height: 1;
-  }
-
-  .tier-price span {
-    font-family: 'IBM Plex Sans', sans-serif;
-    font-size: 1rem;
-    font-weight: 300;
-    color: var(--muted);
-  }
-
-  .tier-divider {
-    width: 100%;
-    height: 1px;
-    background: var(--border);
-    margin-bottom: 1.75rem;
-  }
-
-  .tier-features { flex: 1; }
-
-  .tier-feature {
-    display: flex;
-    gap: 0.75rem;
-    margin-bottom: 0.9rem;
-    font-size: 0.88rem;
-    line-height: 1.5;
-    align-items: flex-start;
-  }
-
-  .feat-check {
-    color: var(--accent);
-    font-weight: 500;
-    flex-shrink: 0;
-    margin-top: 1px;
-  }
-
-  .tier-cta {
-    display: block;
-    width: 100%;
-    margin-top: 2rem;
-    padding: 1rem;
-    border: 1px solid var(--ink);
-    border-radius: 2px;
-    background: transparent;
-    font-family: 'IBM Plex Sans', sans-serif;
-    font-size: 0.78rem;
-    font-weight: 500;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    cursor: pointer;
-    color: var(--ink);
-    transition: all 0.2s ease;
-    text-align: center;
-    text-decoration: none;
-  }
-
-  .tier-cta:hover, .tier.featured .tier-cta {
-    background: var(--ink);
-    color: var(--paper);
-  }
-
-  .tier.featured .tier-cta:hover { background: #333; }
-
-  /* How it works */
-  .how {
-    background: var(--ink);
-    color: var(--paper);
-    padding: 7rem 5rem;
-    opacity: 0;
-    animation: fadeIn 0.6s ease 0.3s forwards;
-  }
-
-  .how-inner {
-    max-width: 1100px;
-    margin: 0 auto;
-  }
-
-  .how-top {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 6rem;
-    align-items: end;
-    margin-bottom: 4rem;
-    padding-bottom: 4rem;
-    border-bottom: 1px solid #222;
-  }
-
-  .how .section-label { color: #555; }
-
-  .how h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: 2.5rem;
-    font-weight: 400;
-    line-height: 1.2;
-    margin-top: 0.5rem;
-  }
-
-  .how h2 em { font-style: italic; color: var(--warm); }
-
-  .how-desc {
-    font-size: 0.95rem;
-    color: #888;
-    line-height: 1.8;
-    align-self: end;
-  }
-
-  .steps {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 3rem;
-  }
-
-  .step-num {
-    font-family: 'Playfair Display', serif;
-    font-size: 2.5rem;
-    color: #222;
-    line-height: 1;
-    margin-bottom: 1.25rem;
-    font-weight: 600;
-  }
-
-  .step h3 {
-    font-size: 0.92rem;
-    font-weight: 500;
-    margin-bottom: 0.6rem;
-    color: var(--paper);
-    letter-spacing: 0.02em;
-  }
-
-  .step p {
-    font-size: 0.83rem;
-    color: #666;
-    line-height: 1.7;
-  }
-
-  /* Bottom CTA */
-  .bottom-cta {
-    padding: 6rem 5rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border-bottom: 1px solid var(--border);
-    opacity: 0;
-    animation: fadeIn 0.6s ease 0.4s forwards;
-  }
-
-  .bottom-cta-left h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: 2.2rem;
-    font-weight: 400;
-    line-height: 1.2;
-    max-width: 480px;
-  }
-
-  .bottom-cta-left h2 em { font-style: italic; color: var(--warm); }
-
-  .bottom-cta-left p {
-    margin-top: 1rem;
-    font-size: 0.95rem;
-    color: var(--muted);
-    max-width: 420px;
-    line-height: 1.7;
-  }
-
-  .bottom-cta-right {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 1rem;
-    flex-shrink: 0;
-  }
-
-  .cta-primary {
-    display: inline-block;
-    font-size: 0.78rem;
-    font-weight: 500;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    background: var(--accent);
-    color: white;
-    padding: 1rem 2.5rem;
-    border-radius: 2px;
-    text-decoration: none;
-    transition: background 0.2s;
-    white-space: nowrap;
-  }
-
-  .cta-primary:hover { background: var(--accent-light); }
-
-  .cta-note {
-    font-size: 0.75rem;
-    color: var(--muted);
-    letter-spacing: 0.05em;
-  }
-
-  /* Footer */
-  footer {
-    background: var(--ink);
-    color: var(--paper);
-    padding: 2.5rem 5rem;
-    display: flex;
-    justify-content: space-between;
+    gap: 36px;
+    list-style: none;
     align-items: center;
   }
 
-  .footer-logo {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.1rem;
-    color: var(--paper);
+  .nav-links a {
+    color: var(--gray);
     text-decoration: none;
-  }
-
-  footer p { font-size: 0.75rem; color: #555; }
-
-  footer a {
-    font-size: 0.75rem;
-    color: #666;
-    text-decoration: none;
-    letter-spacing: 0.1em;
+    font-size: 0.78rem;
+    letter-spacing: 2px;
     text-transform: uppercase;
     transition: color 0.2s;
   }
 
-  footer a:hover { color: var(--paper); }
+  .nav-links a:hover { color: var(--white); }
 
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(16px); }
-    to { opacity: 1; transform: translateY(0); }
+  .nav-cta {
+    background: var(--accent) !important;
+    color: var(--black) !important;
+    padding: 9px 22px;
+    font-weight: 500 !important;
+    letter-spacing: 1.5px !important;
+    transition: opacity 0.2s !important;
   }
 
-  @media (max-width: 960px) {
-    nav, .services, .how, .bottom-cta, footer { padding-left: 1.5rem; padding-right: 1.5rem; }
-    .hero { grid-template-columns: 1fr; min-height: auto; }
-    .hero-left { padding: 4rem 1.5rem; border-right: none; border-bottom: 1px solid var(--border); }
-    .hero-right { padding: 4rem 1.5rem; }
-    .tiers-grid { grid-template-columns: 1fr; }
-    .how-top { grid-template-columns: 1fr; gap: 2rem; }
-    .steps { grid-template-columns: 1fr 1fr; gap: 2rem; }
-    .bottom-cta { flex-direction: column; align-items: flex-start; gap: 2.5rem; }
-    .bottom-cta-right { align-items: flex-start; }
-    .section-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
-    .section-note { text-align: left; }
-    footer { flex-direction: column; gap: 1rem; text-align: center; }
+  .nav-cta:hover { opacity: 0.85; }
+
+  /* ── HERO ─────────────────────────────────────────── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 120px 48px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-noise {
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    opacity: 0.6;
+  }
+
+  .hero-glow {
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(200,169,126,0.06) 0%, transparent 70%);
+    top: 20%;
+    right: -100px;
+    pointer-events: none;
+  }
+
+  .hero-inner {
+    max-width: 900px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-eyebrow {
+    font-size: 0.72rem;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 28px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    display: block;
+    width: 32px;
+    height: 1px;
+    background: var(--accent-line);
+  }
+
+  .hero-headline {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(52px, 7vw, 88px);
+    line-height: 1.0;
+    letter-spacing: -1px;
+    margin-bottom: 36px;
+    color: var(--white);
+  }
+
+  .hero-headline em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .hero-sub {
+    font-size: clamp(16px, 2vw, 20px);
+    line-height: 1.7;
+    color: var(--off-white);
+    max-width: 580px;
+    font-weight: 300;
+    margin-bottom: 52px;
+  }
+
+  .hero-sub strong {
+    color: var(--white);
+    font-weight: 500;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .btn-primary {
+    background: var(--accent);
+    color: var(--black);
+    padding: 15px 36px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: opacity 0.2s;
+    display: inline-block;
+  }
+
+  .btn-primary:hover { opacity: 0.85; }
+
+  .btn-ghost {
+    color: var(--off-white);
+    padding: 15px 0;
+    font-size: 0.82rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-bottom: 1px solid var(--accent-line);
+    transition: color 0.2s, border-color 0.2s;
+  }
+
+  .btn-ghost:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+  }
+
+  .hero-scroll {
+    position: absolute;
+    bottom: 40px;
+    left: 48px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--gray);
+    font-size: 0.7rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    z-index: 2;
+  }
+
+  .hero-scroll::after {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 1px;
+    background: var(--gray);
+  }
+
+  /* ── SECTION BASICS ──────────────────────────────── */
+  .section-wrap {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 0 48px;
+  }
+
+  .section-label {
+    font-size: 0.68rem;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .section-label::before {
+    content: '';
+    display: block;
+    width: 24px;
+    height: 1px;
+    background: var(--accent-line);
+  }
+
+  .rule {
+    height: 1px;
+    background: linear-gradient(to right, var(--accent-line), transparent);
+    margin: 0;
+  }
+
+  /* ── WHO THIS IS FOR ─────────────────────────────── */
+  .for-section {
+    padding: 100px 0;
+    background: var(--dark);
+  }
+
+  .for-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    margin-top: 56px;
+  }
+
+  .for-card {
+    background: var(--dark-2);
+    padding: 44px 40px;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.3s;
+  }
+
+  .for-card:hover {
+    background: var(--dark-3);
+  }
+
+  .for-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 3px;
+    height: 0;
+    background: var(--accent);
+    transition: height 0.3s;
+  }
+
+  .for-card:hover::before { height: 100%; }
+
+  .for-card-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 3.5rem;
+    color: rgba(200,169,126,0.08);
+    line-height: 1;
+    margin-bottom: 20px;
+    display: block;
+  }
+
+  .for-card-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.5rem;
+    margin-bottom: 14px;
+    color: var(--white);
+  }
+
+  .for-card-desc {
+    font-size: 0.92rem;
+    line-height: 1.75;
+    color: var(--off-white);
+    font-weight: 300;
+  }
+
+  .for-card-tag {
+    display: inline-block;
+    margin-top: 20px;
+    font-size: 0.68rem;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--accent);
+    padding: 5px 12px;
+    border: 1px solid var(--accent-line);
+  }
+
+  /* ── HOW IT WORKS ────────────────────────────────── */
+  .how-section {
+    padding: 100px 0;
+  }
+
+  .how-steps {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0;
+    margin-top: 56px;
+    border: 1px solid rgba(255,255,255,0.05);
+  }
+
+  .how-step {
+    padding: 44px 40px;
+    border-right: 1px solid rgba(255,255,255,0.05);
+    position: relative;
+  }
+
+  .how-step:last-child { border-right: none; }
+
+  .how-step-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 4rem;
+    color: var(--accent-dim);
+    line-height: 1;
+    margin-bottom: 20px;
+  }
+
+  .how-step-label {
+    font-size: 0.68rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 10px;
+  }
+
+  .how-step h3 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.4rem;
+    margin-bottom: 14px;
+    color: var(--white);
+  }
+
+  .how-step p {
+    font-size: 0.9rem;
+    line-height: 1.75;
+    color: var(--off-white);
+    font-weight: 300;
+  }
+
+  /* ── SERVICES ────────────────────────────────────── */
+  .services-section {
+    padding: 100px 0;
+    background: var(--dark);
+  }
+
+  .services-intro {
+    max-width: 640px;
+    margin-bottom: 72px;
+  }
+
+  .services-intro h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(36px, 4vw, 52px);
+    line-height: 1.15;
+    margin-bottom: 20px;
+    color: var(--white);
+  }
+
+  .services-intro p {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: var(--off-white);
+    font-weight: 300;
+  }
+
+  .pillar {
+    margin-bottom: 72px;
+  }
+
+  .pillar-header {
+    display: flex;
+    align-items: baseline;
+    gap: 20px;
+    margin-bottom: 32px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .pillar-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.6rem;
+    color: var(--accent);
+    letter-spacing: 2px;
+    opacity: 0.6;
+  }
+
+  .pillar-name {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.8rem;
+    color: var(--white);
+  }
+
+  .pillar-tagline {
+    font-size: 0.78rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gray);
+    margin-left: auto;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+  }
+
+  .service-card {
+    background: var(--dark-2);
+    padding: 36px 32px;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.3s;
+  }
+
+  .service-card:hover {
+    background: #1e1e1e;
+  }
+
+  .service-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: var(--accent-line);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s;
+  }
+
+  .service-card:hover::after { transform: scaleX(1); }
+
+  .service-problem {
+    font-size: 0.7rem;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--gray);
+    margin-bottom: 12px;
+  }
+
+  .service-problem span {
+    color: var(--accent);
+    font-style: italic;
+    text-transform: none;
+    letter-spacing: 0;
+    font-size: 0.8rem;
+  }
+
+  .service-name {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.2rem;
+    color: var(--white);
+    margin-bottom: 12px;
+    line-height: 1.3;
+  }
+
+  .service-desc {
+    font-size: 0.88rem;
+    line-height: 1.75;
+    color: var(--off-white);
+    font-weight: 300;
+    margin-bottom: 20px;
+  }
+
+  .service-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 16px;
+    border-top: 1px solid rgba(255,255,255,0.04);
+  }
+
+  .service-format {
+    font-size: 0.68rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gray);
+  }
+
+  .service-arrow {
+    color: var(--accent);
+    font-size: 0.9rem;
+    opacity: 0;
+    transition: opacity 0.2s, transform 0.2s;
+  }
+
+  .service-card:hover .service-arrow {
+    opacity: 1;
+    transform: translateX(4px);
+  }
+
+  /* ── NOTE BOX ────────────────────────────────────── */
+  .note-box {
+    background: var(--accent-dim);
+    border-left: 3px solid var(--accent);
+    padding: 24px 28px;
+    margin-top: 56px;
+  }
+
+  .note-box p {
+    font-size: 0.92rem;
+    line-height: 1.75;
+    color: var(--off-white);
+    font-weight: 300;
+  }
+
+  .note-box strong {
+    color: var(--white);
+    font-weight: 500;
+  }
+
+  /* ── BOOKING ─────────────────────────────────────── */
+  .booking-section {
+    padding: 100px 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .booking-glow {
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(200,169,126,0.05) 0%, transparent 70%);
+    bottom: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+    pointer-events: none;
+  }
+
+  .booking-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+    position: relative;
+    z-index: 2;
+  }
+
+  .booking-left h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(36px, 4vw, 52px);
+    line-height: 1.1;
+    margin-bottom: 24px;
+    color: var(--white);
+  }
+
+  .booking-left h2 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .booking-left p {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: var(--off-white);
+    font-weight: 300;
+    margin-bottom: 36px;
+  }
+
+  .session-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+
+  .session-card {
+    background: var(--dark-2);
+    padding: 24px 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-decoration: none;
+    border: 1px solid rgba(255,255,255,0.03);
+    transition: background 0.2s, border-color 0.2s;
+    gap: 16px;
+  }
+
+  .session-card:hover {
+    background: var(--dark-3);
+    border-color: var(--accent-line);
+  }
+
+  .session-card-info {}
+
+  .session-card-name {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.1rem;
+    color: var(--white);
+    margin-bottom: 4px;
+  }
+
+  .session-card-detail {
+    font-size: 0.78rem;
+    color: var(--gray);
+    letter-spacing: 1px;
+  }
+
+  .session-card-cta {
+    font-size: 0.72rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--accent);
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .booking-note {
+    margin-top: 20px;
+    font-size: 0.8rem;
+    color: var(--gray);
+    font-style: italic;
+    font-weight: 300;
+  }
+
+  /* ── FOOTER ──────────────────────────────────────── */
+  footer {
+    padding: 60px 48px 40px;
+    border-top: 1px solid rgba(255,255,255,0.04);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 24px;
+  }
+
+  .footer-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    letter-spacing: 4px;
+    font-size: 1rem;
+    color: var(--off-white);
+  }
+
+  .footer-logo em {
+    color: var(--accent);
+    font-style: normal;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+  }
+
+  .footer-links a {
+    color: var(--gray);
+    text-decoration: none;
+    font-size: 0.78rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover { color: var(--accent); }
+
+  .footer-copy {
+    width: 100%;
+    text-align: center;
+    color: rgba(255,255,255,0.12);
+    font-size: 0.72rem;
+    letter-spacing: 1px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255,255,255,0.03);
+    margin-top: 16px;
+  }
+
+  /* ── FADE ANIMATIONS ─────────────────────────────── */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.65s ease, transform 0.65s ease;
+  }
+
+  .fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ── RESPONSIVE ──────────────────────────────────── */
+  @media (max-width: 900px) {
+    nav { padding: 16px 24px; }
+    .nav-links { display: none; }
+    .hero { padding: 100px 24px 60px; }
+    .section-wrap { padding: 0 24px; }
+    .for-grid { grid-template-columns: 1fr; }
+    .how-steps { grid-template-columns: 1fr; }
+    .how-step { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.05); }
+    .services-grid { grid-template-columns: 1fr; }
+    .pillar-tagline { display: none; }
+    .booking-inner { grid-template-columns: 1fr; gap: 48px; }
+    footer { flex-direction: column; align-items: flex-start; }
   }
 </style>
 </head>
 <body>
 
+<!-- NAV -->
 <nav>
-  <a href="#" class="logo">Business Casual</a>
-  <div class="nav-right">
-    <span class="nav-tag">Strategy Sessions</span>
-    <a href="#sessions" class="nav-cta">Book a Session</a>
-  </div>
+  <a href="#" class="nav-logo"><em>Business Casual</em></a>
+  <ul class="nav-links">
+    <li><a href="#for-section">Who It's For</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#booking" class="nav-cta">Book a Session</a></li>
+  </ul>
 </nav>
 
-<!-- Hero -->
+<!-- HERO -->
 <section class="hero">
-  <div class="hero-left">
-    <div class="eyebrow">For Small Businesses &amp; Nonprofits</div>
-    <h1>You're the CEO,<br>CMO, CFO, <em>and</em><br>COO. Let's fix that.</h1>
-    <p class="hero-body">
-      When you're running everything yourself, strategy is always the last thing on the list. Your brand feels inconsistent, your content feels reactive, and you know you're leaving growth on the table — you just don't have the bandwidth to address it.
+  <div class="hero-noise"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-inner">
+    <div class="hero-eyebrow fade-up">Strategy · Brand · Systems · AI</div>
+    <h1 class="hero-headline fade-up">
+      Most people don't<br>
+      have a strategy problem.<br>
+      They have a <em>clarity</em> problem.
+    </h1>
+    <p class="hero-sub fade-up">
+      Business Casual works with operators, founders, and nonprofit leaders
+      who are smart enough to know something is off — but too close to it to see what.
+      <strong>We find it. Then we fix it together.</strong>
     </p>
-    <a href="#sessions" class="hero-cta">See How It Works</a>
-  </div>
-
-  <div class="hero-right">
-    <p class="problem-label">Sound familiar?</p>
-    <ul class="problem-list">
-      <li>
-        <span class="problem-icon">→</span>
-        Your brand exists, but nobody — including you — can describe it in one sentence
-      </li>
-      <li>
-        <span class="problem-icon">→</span>
-        You post on social media when you remember to, and it never feels cohesive
-      </li>
-      <li>
-        <span class="problem-icon">→</span>
-        You know AI could save you time but you don't know where to start
-      </li>
-      <li>
-        <span class="problem-icon">→</span>
-        Your operations run on gut feeling and tribal knowledge, not systems
-      </li>
-    </ul>
-
-    <div class="positioning">
-      <p>Most agencies hand you a deck and wish you luck. We hand you a plan built around how you actually operate — then help you execute it.</p>
-      <span>— Business Casual</span>
+    <div class="hero-actions fade-up">
+      <a href="#booking" class="btn-primary">Book a Clarity Session</a>
+      <a href="#services" class="btn-ghost">See What We Do</a>
     </div>
   </div>
+  <div class="hero-scroll">Scroll</div>
 </section>
 
-<!-- Services -->
-<section class="services" id="sessions">
-  <div class="section-header">
-    <div>
-      <p class="section-label">What we offer</p>
-      <h2>Choose your session</h2>
-    </div>
-    <p class="section-note">Every session includes a written deliverable. No fluff, no filler — just a clear plan you can act on.</p>
-  </div>
+<div class="rule"></div>
 
-  <div class="tiers-grid">
+<!-- WHO THIS IS FOR -->
+<section class="for-section" id="for-section">
+  <div class="section-wrap">
+    <div class="section-label fade-up">Who This Is For</div>
+    <h2 class="fade-up" style="font-family:'DM Serif Display',serif; font-size:clamp(32px,4vw,48px); margin-bottom:12px; line-height:1.15;">
+      If any of this sounds familiar,<br>you're in the right place.
+    </h2>
+    <p class="fade-up" style="font-size:1rem; color:var(--off-white); font-weight:300; max-width:560px; line-height:1.8; margin-bottom:0;">
+      Business Casual doesn't do one-size-fits-all. Every engagement starts with figuring out what you actually need — not what sounds right, what actually is.
+    </p>
 
-    <div class="tier">
-      <p class="tier-eyebrow">Tier 01</p>
-      <h3 class="tier-title">The Clarity Session</h3>
-      <p class="tier-tagline">One focused problem. One clear path forward.</p>
-      <div class="tier-price">$150 <span>/ session</span></div>
-      <div class="tier-divider"></div>
-      <div class="tier-features">
-        <div class="tier-feature"><span class="feat-check">✓</span><span>60 min strategy call</span></div>
-        <div class="tier-feature"><span class="feat-check">✓</span><span>Written action plan delivered within 48 hrs</span></div>
-        <div class="tier-feature"><span class="feat-check">✓</span><span>Prioritized next steps tailored to your situation</span></div>
-        <div class="tier-feature"><span class="feat-check">✓</span><span>Best for: getting unstuck fast</span></div>
+    <div class="for-grid">
+      <div class="for-card fade-up">
+        <span class="for-card-num">01</span>
+        <h3 class="for-card-title">The Operator Running on Instinct</h3>
+        <p class="for-card-desc">
+          You're good at what you do and you've built something real. But the org chart exists in your head, processes live in your memory, and every time you try to step back, something breaks. You don't need a consultant telling you what's wrong — you already know. You need someone to help you build the systems that make it run without you.
+        </p>
+        <span class="for-card-tag">Operations & Systems</span>
       </div>
-      <a href="https://calendly.com/businesscasualww/30min" target="_blank" class="tier-cta">Book This Session</a>
-    </div>
 
-    <div class="tier featured">
-      <div class="tier-badge">Most Popular</div>
-      <p class="tier-eyebrow">Tier 02</p>
-      <h3 class="tier-title">The Blueprint</h3>
-      <p class="tier-tagline">The full picture — strategy, brand, and content direction.</p>
-      <div class="tier-price">$350 <span>/ session</span></div>
-      <div class="tier-divider"></div>
-      <div class="tier-features">
-        <div class="tier-feature"><span class="feat-check">✓</span><span>Everything in The Clarity Session</span></div>
-        <div class="tier-feature"><span class="feat-check">✓</span><span>Brand positioning one-pager</span></div>
-        <div class="tier-feature"><span class="feat-check">✓</span><span>Social media audit via our proprietary brand analysis tool</span></div>
-        <div class="tier-feature"><span class="feat-check">✓</span><span>Content direction aligned to your brand voice</span></div>
-        <div class="tier-feature"><span class="feat-check">✓</span><span>Best for: organizations ready to get serious</span></div>
+      <div class="for-card fade-up">
+        <span class="for-card-num">02</span>
+        <h3 class="for-card-title">The Brand That Exists Only in Your Head</h3>
+        <p class="for-card-desc">
+          You have the idea, the name, maybe the logo. But the domain points nowhere, the booking link doesn't exist, and when someone asks what you do you give a different answer every time. You're not stuck on execution — you're stuck on where to start. One session changes that.
+        </p>
+        <span class="for-card-tag">Brand & Presence</span>
       </div>
-      <a href="https://calendly.com/businesscasualww/the-blueprint" target="_blank" class="tier-cta">Book This Session</a>
-    </div>
 
-    <div class="tier">
-      <p class="tier-eyebrow">Tier 03</p>
-      <h3 class="tier-title">The Full Build</h3>
-      <p class="tier-tagline">Everything you need to execute — handed to you ready to go.</p>
-      <div class="tier-price">$475 <span>/ session</span></div>
-      <div class="tier-divider"></div>
-      <div class="tier-features">
-        <div class="tier-feature"><span class="feat-check">✓</span><span>Everything in The Blueprint</span></div>
-        <div class="tier-feature"><span class="feat-check">✓</span><span>AI tools &amp; workflow recommendations built for your team</span></div>
-        <div class="tier-feature"><span class="feat-check">✓</span><span>Custom content templates ready to use immediately</span></div>
-        <div class="tier-feature"><span class="feat-check">✓</span><span>30 min follow-up call to walk through everything</span></div>
-        <div class="tier-feature"><span class="feat-check">✓</span><span>Best for: organizations ready to move fast</span></div>
+      <div class="for-card fade-up">
+        <span class="for-card-num">03</span>
+        <h3 class="for-card-title">The Nonprofit Leader Rebuilding on Empty</h3>
+        <p class="for-card-desc">
+          You care more about the mission than anyone else in the room. That's exactly why it's unsustainable — because you're carrying it alone. Burned out volunteers, scattered documentation, board seats that need filling. You need simple systems, not another strategic plan that sits in a Google Drive.
+        </p>
+        <span class="for-card-tag">Nonprofit Operations</span>
       </div>
-      <a href="https://calendly.com/businesscasualww/the-full-build" target="_blank" class="tier-cta">Book This Session</a>
-    </div>
 
-  </div>
-</section>
-
-<!-- How it works -->
-<section class="how">
-  <div class="how-inner">
-    <div class="how-top">
-      <div>
-        <p class="section-label">The process</p>
-        <h2>Simple. Focused.<br><em>No busywork.</em></h2>
-      </div>
-      <p class="how-desc">We keep it straightforward. You show up, we listen, and we hand you something built specifically around your situation — not a recycled framework dressed up as strategy.</p>
-    </div>
-    <div class="steps">
-      <div class="step">
-        <div class="step-num">01</div>
-        <h3>Book &amp; confirm</h3>
-        <p>Choose your tier, select a time, and pay to confirm. You'll receive a Zoom link and a short prep questionnaire automatically.</p>
-      </div>
-      <div class="step">
-        <div class="step-num">02</div>
-        <h3>The strategy call</h3>
-        <p>We ask the right questions and listen carefully. No pitch, no pressure — just a focused conversation about where you are and where you want to go.</p>
-      </div>
-      <div class="step">
-        <div class="step-num">03</div>
-        <h3>Your deliverable</h3>
-        <p>Within 48 hours we deliver a strategy document built specifically around your situation — not a template, not a generic checklist.</p>
-      </div>
-      <div class="step">
-        <div class="step-num">04</div>
-        <h3>Move forward</h3>
-        <p>Execute on your own with a clear roadmap, or explore ongoing support. Either way, you leave with more clarity than you came with.</p>
+      <div class="for-card fade-up">
+        <span class="for-card-num">04</span>
+        <h3 class="for-card-title">The Content Creator Who Can't Find the Thread</h3>
+        <p class="for-card-desc">
+          You've been posting consistently, or trying to. But it doesn't feel cohesive — like you're throwing things at a wall and hoping. You know you have something worth saying. You just haven't found the specific angle that makes strangers stop and think "this person gets it." That angle exists. We find it.
+        </p>
+        <span class="for-card-tag">Content & Growth</span>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Bottom CTA -->
-<section class="bottom-cta">
-  <div class="bottom-cta-left">
-    <h2>Ready to stop wearing <em>every hat</em> at once?</h2>
-    <p>Book a session and walk away with a clear, honest, actionable plan — built around how your organization actually operates.</p>
-  </div>
-  <div class="bottom-cta-right">
-    <a href="https://calendly.com/businesscasualww/30min" target="_blank" class="cta-primary">Book a Session</a>
-    <span class="cta-note">Written deliverable included with every session</span>
+<div class="rule"></div>
+
+<!-- HOW IT WORKS -->
+<section class="how-section" id="how">
+  <div class="section-wrap">
+    <div class="section-label fade-up">How It Works</div>
+    <h2 class="fade-up" style="font-family:'DM Serif Display',serif; font-size:clamp(32px,4vw,48px); margin-bottom:48px; line-height:1.15;">
+      Discovery first. Always.
+    </h2>
+
+    <div class="how-steps">
+      <div class="how-step fade-up">
+        <div class="how-step-num">01</div>
+        <div class="how-step-label">The Clarity Session</div>
+        <h3>Figure out what's actually first</h3>
+        <p>
+          Before anything gets built, bought, or changed — we talk. Not a sales call. A real working session where we map the actual problem, cut the noise, and land on the one thing that moves the needle. You leave with a written action plan whether we keep working together or not.
+        </p>
+      </div>
+
+      <div class="how-step fade-up">
+        <div class="how-step-num">02</div>
+        <div class="how-step-label">The Plan</div>
+        <h3>Build toward the real goal</h3>
+        <p>
+          Once we know what the problem actually is, we scope what solving it looks like. Sometimes that's a single session. Sometimes it's a full build. Sometimes it's just a framework you go execute on your own. The point is the plan fits the situation — not the other way around.
+        </p>
+      </div>
+
+      <div class="how-step fade-up">
+        <div class="how-step-num">03</div>
+        <div class="how-step-label">The Work</div>
+        <h3>Execute with you or hand it off clean</h3>
+        <p>
+          If you want us in the execution, we're in it — fully. If you want to run it yourself, we hand off a complete, documented deliverable so you can operate independently after we're done. Either way, the work is thorough and the handoff is clean.
+        </p>
+      </div>
+    </div>
   </div>
 </section>
 
+<div class="rule"></div>
+
+<!-- SERVICES -->
+<section class="services-section" id="services">
+  <div class="section-wrap">
+    <div class="services-intro fade-up">
+      <div class="section-label">What We Do</div>
+      <h2>The work, broken down by what you actually need.</h2>
+      <p>
+        Every engagement is tailored. These aren't packages — they're problem types. Tell us what's keeping you up at night and we'll tell you which of these fits.
+      </p>
+    </div>
+
+    <!-- PILLAR 1: CLARITY -->
+    <div class="pillar fade-up">
+      <div class="pillar-header">
+        <span class="pillar-num">01</span>
+        <span class="pillar-name">Clarity Sessions</span>
+        <span class="pillar-tagline">Figure out what's actually first</span>
+      </div>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-problem">The problem: <span>"I don't know where to start."</span></div>
+          <h3 class="service-name">The Zero-Stage Session</h3>
+          <p class="service-desc">
+            You come in with a mess of ideas, half-built projects, and competing priorities. You leave with one clear next move and the reasoning behind it. This is the session that makes every other session more useful.
+          </p>
+          <div class="service-footer">
+            <span class="service-format">1:1 · 60 min · Written summary included</span>
+            <span class="service-arrow">→</span>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <div class="service-problem">The problem: <span>"I've built something but it's not working."</span></div>
+          <h3 class="service-name">The Audit & Teardown</h3>
+          <p class="service-desc">
+            You have a brand, a site, a content strategy — and none of it is pulling its weight. We go through all of it, tell you exactly what's broken and what order to fix it in. No softening. Just a clear written assessment with prioritized recommendations.
+          </p>
+          <div class="service-footer">
+            <span class="service-format">1:1 · 90 min · Written report delivered</span>
+            <span class="service-arrow">→</span>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <div class="service-problem">The problem: <span>"I need to think through a specific decision."</span></div>
+          <h3 class="service-name">The Strategy Session</h3>
+          <p class="service-desc">
+            Focused 90-minute working session on a specific topic — positioning, pricing, a launch, a pivot, a hire. You bring the situation, we bring the framework. You leave with a decision or a plan, not more questions.
+          </p>
+          <div class="service-footer">
+            <span class="service-format">1:1 · 90 min · Notes and frameworks included</span>
+            <span class="service-arrow">→</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PILLAR 2: BRAND & PRESENCE -->
+    <div class="pillar fade-up">
+      <div class="pillar-header">
+        <span class="pillar-num">02</span>
+        <span class="pillar-name">Brand & Presence</span>
+        <span class="pillar-tagline">Go from idea to real</span>
+      </div>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-problem">The problem: <span>"My brand exists in my head but nowhere else."</span></div>
+          <h3 class="service-name">The Full Build</h3>
+          <p class="service-desc">
+            In one session we go from nothing to live: landing page, booking system, email list, domain connected, and a complete handoff document so you know how to run everything yourself. No lingering dependencies. You leave owning it completely.
+          </p>
+          <div class="service-footer">
+            <span class="service-format">Same-day delivery · Full handoff doc</span>
+            <span class="service-arrow">→</span>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <div class="service-problem">The problem: <span>"I have a site but it doesn't represent me."</span></div>
+          <h3 class="service-name">The Presence Rebuild</h3>
+          <p class="service-desc">
+            Your current site, bio, or booking page doesn't match the work you're actually doing. We rebuild the positioning, rewrite the copy, update the structure, and make sure what someone finds when they search you reflects who you actually are.
+          </p>
+          <div class="service-footer">
+            <span class="service-format">Strategy + execution · Delivered in 1–2 sessions</span>
+            <span class="service-arrow">→</span>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <div class="service-problem">The problem: <span>"I don't know how to explain what I do."</span></div>
+          <h3 class="service-name">Brand Positioning & Voice</h3>
+          <p class="service-desc">
+            You know what you do but you can't say it cleanly. We work through audience, differentiation, and messaging until you have a one-liner that actually works, a voice guide you can use, and copy you can put on anything.
+          </p>
+          <div class="service-footer">
+            <span class="service-format">Working session + written deliverable</span>
+            <span class="service-arrow">→</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PILLAR 3: CONTENT & GROWTH -->
+    <div class="pillar fade-up">
+      <div class="pillar-header">
+        <span class="pillar-num">03</span>
+        <span class="pillar-name">Content & Growth</span>
+        <span class="pillar-tagline">Stop posting randomly. Start building something.</span>
+      </div>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-problem">The problem: <span>"I post but nothing sticks."</span></div>
+          <h3 class="service-name">Content System Build</h3>
+          <p class="service-desc">
+            We build a repeatable content framework around your brand pillars: voice guide, content calendar, platform-specific strategy, and a workflow you can run yourself without burning out or sounding like every other brand in your space.
+          </p>
+          <div class="service-footer">
+            <span class="service-format">Strategy session + 30-day framework delivered</span>
+            <span class="service-arrow">→</span>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <div class="service-problem">The problem: <span>"My LinkedIn/Instagram doesn't reflect my actual work."</span></div>
+          <h3 class="service-name">Profile & Presence Overhaul</h3>
+          <p class="service-desc">
+            Full teardown and rebuild of your social profiles. New positioning, rewritten bios, pinned content strategy, and a posting framework that builds credibility over time. Designed for professionals who need to look as good online as they are in the room.
+          </p>
+          <div class="service-footer">
+            <span class="service-format">Audit + rewrite + 30-day plan</span>
+            <span class="service-arrow">→</span>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <div class="service-problem">The problem: <span>"I want to sell something but don't know how to launch it."</span></div>
+          <h3 class="service-name">Digital Product Launch</h3>
+          <p class="service-desc">
+            From idea to live product: positioning, pricing, platform setup (Gumroad or otherwise), and the launch content sequence that drives the first sales. Built for coaches, consultants, and creators who want to turn their knowledge into revenue without a complicated funnel.
+          </p>
+          <div class="service-footer">
+            <span class="service-format">Strategy to launch · Full setup included</span>
+            <span class="service-arrow">→</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PILLAR 4: OPERATIONS -->
+    <div class="pillar fade-up">
+      <div class="pillar-header">
+        <span class="pillar-num">04</span>
+        <span class="pillar-name">Operations & Systems</span>
+        <span class="pillar-tagline">Get out from under the chaos</span>
+      </div>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-problem">The problem: <span>"Everything runs through me and I can't step back."</span></div>
+          <h3 class="service-name">Operating System Build</h3>
+          <p class="service-desc">
+            We map your current workflow, find the bottlenecks that require you personally, and build simple systems that let your org function without you in the middle of everything. Weekly rhythms, communication protocols, decision frameworks — documented and usable.
+          </p>
+          <div class="service-footer">
+            <span class="service-format">Audit + build + written SOPs</span>
+            <span class="service-arrow">→</span>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <div class="service-problem">The problem: <span>"Our nonprofit is rebuilding from scratch."</span></div>
+          <h3 class="service-name">Nonprofit Rebuild Package</h3>
+          <p class="service-desc">
+            Board recruitment campaigns, event frameworks, community engagement strategy, policy documentation. Built for orgs coming out of leadership transitions or organizational collapse — when you need real infrastructure, not another strategic plan that sits in a Google Drive.
+          </p>
+          <div class="service-footer">
+            <span class="service-format">Multi-session engagement · Full documentation</span>
+            <span class="service-arrow">→</span>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <div class="service-problem">The problem: <span>"We're planning a big event and don't have a process."</span></div>
+          <h3 class="service-name">Event Strategy & Launch</h3>
+          <p class="service-desc">
+            From concept through promotion: event structure, timeline, logistics checklist, and a marketing sequence that drives real registration. We build the playbook so your team knows exactly what to do and when — before, during, and after the event.
+          </p>
+          <div class="service-footer">
+            <span class="service-format">Strategy + playbook + promotional framework</span>
+            <span class="service-arrow">→</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PILLAR 5: AI INTEGRATION -->
+    <div class="pillar fade-up">
+      <div class="pillar-header">
+        <span class="pillar-num">05</span>
+        <span class="pillar-name">AI Integration & Workflow</span>
+        <span class="pillar-tagline">Use AI like someone who actually knows how</span>
+      </div>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-problem">The problem: <span>"I know AI could help but I don't know where to start."</span></div>
+          <h3 class="service-name">AI Workflow Buildout</h3>
+          <p class="service-desc">
+            We audit your actual day-to-day work, map where the friction is, and build you a custom implementation — the right tools, the right setup, and a workflow that fits how you actually operate. Not generic. Specific to your situation, your team, your goals.
+          </p>
+          <div class="service-footer">
+            <span class="service-format">Audit + stack + hands-on implementation</span>
+            <span class="service-arrow">→</span>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <div class="service-problem">The problem: <span>"My content sounds like AI wrote it."</span></div>
+          <h3 class="service-name">AI Writing System</h3>
+          <p class="service-desc">
+            Custom prompt library and content workflow built around your specific voice — so when you sit down to write, you have a system that produces drafts worth publishing. The goal is content that sounds unmistakably like you, not like it came from a template.
+          </p>
+          <div class="service-footer">
+            <span class="service-format">Session + prompt library + voice guide</span>
+            <span class="service-arrow">→</span>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <div class="service-problem">The problem: <span>"My team doesn't know how to use AI responsibly."</span></div>
+          <h3 class="service-name">Team AI Onboarding</h3>
+          <p class="service-desc">
+            Practical onboarding session for small teams and nonprofit boards. Not a lecture — a working session where we go through real use cases for your org, set guidelines, and make sure everyone leaves with tools they'll actually use. Policy documentation included.
+          </p>
+          <div class="service-footer">
+            <span class="service-format">Group session · Policy doc + staff guide delivered</span>
+            <span class="service-arrow">→</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="note-box fade-up">
+      <p>
+        <strong>Not sure which of these fits?</strong> That's exactly what the Clarity Session is for. You don't need to know what you need before you book — figuring that out is the first thing we do together. Book a 30-minute intro call and we'll figure it out from there.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<!-- BOOKING -->
+<section class="booking-section" id="booking">
+  <div class="booking-glow"></div>
+  <div class="section-wrap">
+    <div class="booking-inner">
+      <div class="booking-left fade-up">
+        <div class="section-label">Book a Session</div>
+        <h2>The first step is<br><em>always</em> the conversation.</h2>
+        <p>
+          Every engagement starts with a real working session — not a sales pitch. You bring the situation, we bring the framework. Pick the format that fits where you are right now.
+        </p>
+      </div>
+
+      <div class="fade-up">
+        <div class="session-cards">
+          <a href="https://calendly.com/businesscasualww" target="_blank" class="session-card">
+            <div class="session-card-info">
+              <div class="session-card-name">Clarity Session</div>
+              <div class="session-card-detail">30 min · The zero-stage call · Where every engagement starts</div>
+            </div>
+            <span class="session-card-cta">Book →</span>
+          </a>
+
+          <a href="https://calendly.com/businesscasualww" target="_blank" class="session-card">
+            <div class="session-card-info">
+              <div class="session-card-name">Strategy Session</div>
+              <div class="session-card-detail">60 min · Deeper dive on a specific challenge</div>
+            </div>
+            <span class="session-card-cta">Book →</span>
+          </a>
+
+          <a href="https://calendly.com/businesscasualww" target="_blank" class="session-card">
+            <div class="session-card-info">
+              <div class="session-card-name">Full Build Session</div>
+              <div class="session-card-detail">Extended · Site, systems, or strategy built in a single day</div>
+            </div>
+            <span class="session-card-cta">Book →</span>
+          </a>
+        </div>
+
+        <p class="booking-note">
+          Not sure which to pick? Start with the Clarity Session. It's the same first step regardless.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
 <footer>
-  <a href="#" class="footer-logo">Business Casual</a>
-  <p>© 2025 Business Casual. All rights reserved.</p>
-  <a href="https://x.com/busnesscasualww" target="_blank">@busnesscasualww</a>
+  <div class="footer-logo"><em>Business Casual</em></div>
+  <ul class="footer-links">
+    <li><a href="https://x.com/businesscasualww" target="_blank">X / Twitter</a></li>
+    <li><a href="https://linktr.ee/businesscasualww" target="_blank">Linktree</a></li>
+    <li><a href="https://calendly.com/businesscasualww" target="_blank">Book a Session</a></li>
+  </ul>
+  <div class="footer-copy">© 2026 Business Casual · San Diego, CA</div>
 </footer>
+
+<script>
+  const fadeEls = document.querySelectorAll('.fade-up');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  fadeEls.forEach(el => observer.observe(el));
+</script>
 
 </body>
 </html>
