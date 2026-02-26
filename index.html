@@ -330,6 +330,14 @@
     color: var(--accent);
     padding: 5px 12px;
     border: 1px solid var(--accent-line);
+    text-decoration: none;
+    transition: background 0.2s, color 0.2s;
+    cursor: pointer;
+  }
+
+  .for-card-tag:hover {
+    background: var(--accent);
+    color: var(--black);
   }
 
   /* ── HOW IT WORKS ────────────────────────────────── */
@@ -456,6 +464,7 @@
     position: relative;
     overflow: hidden;
     transition: background 0.3s;
+    cursor: pointer;
   }
 
   .service-card:hover {
@@ -529,11 +538,21 @@
     font-size: 0.9rem;
     opacity: 0;
     transition: opacity 0.2s, transform 0.2s;
+    text-decoration: none;
   }
 
   .service-card:hover .service-arrow {
     opacity: 1;
     transform: translateX(4px);
+  }
+
+  .service-card {
+    background: var(--dark-2);
+    padding: 36px 32px;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.3s;
+    cursor: pointer;
   }
 
   /* ── NOTE BOX ────────────────────────────────────── */
@@ -554,6 +573,131 @@
   .note-box strong {
     color: var(--white);
     font-weight: 500;
+  }
+
+  /* ── FREE RESOURCES ──────────────────────────────── */
+  .resources-section {
+    padding: 100px 0;
+    background: var(--black);
+  }
+
+  .resources-intro {
+    max-width: 640px;
+    margin-bottom: 56px;
+  }
+
+  .resources-intro h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(32px, 4vw, 48px);
+    line-height: 1.15;
+    margin-bottom: 16px;
+    color: var(--white);
+  }
+
+  .resources-intro p {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: var(--off-white);
+    font-weight: 300;
+  }
+
+  .resources-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+  }
+
+  .resource-card {
+    background: var(--dark-2);
+    padding: 40px 36px;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.3s;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .resource-card:hover {
+    background: var(--dark-3);
+  }
+
+  .resource-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--accent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s;
+  }
+
+  .resource-card:hover::before { transform: scaleX(1); }
+
+  .resource-tag {
+    font-size: 0.65rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .resource-tag::before {
+    content: '';
+    display: block;
+    width: 16px;
+    height: 1px;
+    background: var(--accent-line);
+  }
+
+  .resource-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.35rem;
+    color: var(--white);
+    margin-bottom: 14px;
+    line-height: 1.25;
+  }
+
+  .resource-desc {
+    font-size: 0.88rem;
+    line-height: 1.75;
+    color: var(--off-white);
+    font-weight: 300;
+    margin-bottom: 32px;
+    flex-grow: 1;
+  }
+
+  .resource-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 16px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    margin-top: auto;
+  }
+
+  .resource-free {
+    font-size: 0.68rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 500;
+  }
+
+  .resource-arrow {
+    color: var(--accent);
+    font-size: 0.9rem;
+    transition: transform 0.2s;
+  }
+
+  .resource-card:hover .resource-arrow {
+    transform: translateX(4px);
   }
 
   /* ── BOOKING ─────────────────────────────────────── */
@@ -732,6 +876,7 @@
     .how-steps { grid-template-columns: 1fr; }
     .how-step { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.05); }
     .services-grid { grid-template-columns: 1fr; }
+    .resources-grid { grid-template-columns: 1fr; }
     .pillar-tagline { display: none; }
     .booking-inner { grid-template-columns: 1fr; gap: 48px; }
     footer { flex-direction: column; align-items: flex-start; }
@@ -746,6 +891,7 @@
   <ul class="nav-links">
     <li><a href="#for-section">Who It's For</a></li>
     <li><a href="#services">Services</a></li>
+    <li><a href="#resources">Free Guides</a></li>
     <li><a href="#booking" class="nav-cta">Book a Session</a></li>
   </ul>
 </nav>
@@ -794,7 +940,7 @@
         <p class="for-card-desc">
           You're good at what you do and you've built something real. But the org chart exists in your head, processes live in your memory, and every time you try to step back, something breaks. You don't need a consultant telling you what's wrong — you already know. You need someone to help you build the systems that make it run without you.
         </p>
-        <span class="for-card-tag">Operations & Systems</span>
+        <a href="#pillar-operations" class="for-card-tag">Operations & Systems</a>
       </div>
 
       <div class="for-card fade-up">
@@ -803,7 +949,7 @@
         <p class="for-card-desc">
           You have the idea, the name, maybe the logo. But the domain points nowhere, the booking link doesn't exist, and when someone asks what you do you give a different answer every time. You're not stuck on execution — you're stuck on where to start. One session changes that.
         </p>
-        <span class="for-card-tag">Brand & Presence</span>
+        <a href="#pillar-brand" class="for-card-tag">Brand & Presence</a>
       </div>
 
       <div class="for-card fade-up">
@@ -812,7 +958,7 @@
         <p class="for-card-desc">
           You care more about the mission than anyone else in the room. That's exactly why it's unsustainable — because you're carrying it alone. Burned out volunteers, scattered documentation, board seats that need filling. You need simple systems, not another strategic plan that sits in a Google Drive.
         </p>
-        <span class="for-card-tag">Nonprofit Operations</span>
+        <a href="#pillar-operations" class="for-card-tag">Nonprofit Operations</a>
       </div>
 
       <div class="for-card fade-up">
@@ -821,7 +967,7 @@
         <p class="for-card-desc">
           You've been posting consistently, or trying to. But it doesn't feel cohesive — like you're throwing things at a wall and hoping. You know you have something worth saying. You just haven't found the specific angle that makes strangers stop and think "this person gets it." That angle exists. We find it.
         </p>
-        <span class="for-card-tag">Content & Growth</span>
+        <a href="#pillar-content" class="for-card-tag">Content & Growth</a>
       </div>
     </div>
   </div>
@@ -882,14 +1028,14 @@
     </div>
 
     <!-- PILLAR 1: CLARITY -->
-    <div class="pillar fade-up">
+    <div class="pillar fade-up" id="pillar-clarity">
       <div class="pillar-header">
         <span class="pillar-num">01</span>
         <span class="pillar-name">Clarity Sessions</span>
         <span class="pillar-tagline">Figure out what's actually first</span>
       </div>
       <div class="services-grid">
-        <div class="service-card">
+        <div class="service-card" onclick="document.getElementById('booking').scrollIntoView({behavior:'smooth'})" style="cursor:pointer;">
           <div class="service-problem">The problem: <span>"I don't know where to start."</span></div>
           <h3 class="service-name">The Zero-Stage Session</h3>
           <p class="service-desc">
@@ -897,11 +1043,11 @@
           </p>
           <div class="service-footer">
             <span class="service-format">1:1 · 60 min · Written summary included</span>
-            <span class="service-arrow">→</span>
+            <a href="#booking" class="service-arrow">→</a>
           </div>
         </div>
 
-        <div class="service-card">
+        <div class="service-card" onclick="document.getElementById('booking').scrollIntoView({behavior:'smooth'})" style="cursor:pointer;">
           <div class="service-problem">The problem: <span>"I've built something but it's not working."</span></div>
           <h3 class="service-name">The Audit & Teardown</h3>
           <p class="service-desc">
@@ -909,11 +1055,11 @@
           </p>
           <div class="service-footer">
             <span class="service-format">1:1 · 90 min · Written report delivered</span>
-            <span class="service-arrow">→</span>
+            <a href="#booking" class="service-arrow">→</a>
           </div>
         </div>
 
-        <div class="service-card">
+        <div class="service-card" onclick="document.getElementById('booking').scrollIntoView({behavior:'smooth'})" style="cursor:pointer;">
           <div class="service-problem">The problem: <span>"I need to think through a specific decision."</span></div>
           <h3 class="service-name">The Strategy Session</h3>
           <p class="service-desc">
@@ -921,21 +1067,21 @@
           </p>
           <div class="service-footer">
             <span class="service-format">1:1 · 90 min · Notes and frameworks included</span>
-            <span class="service-arrow">→</span>
+            <a href="#booking" class="service-arrow">→</a>
           </div>
         </div>
       </div>
     </div>
 
     <!-- PILLAR 2: BRAND & PRESENCE -->
-    <div class="pillar fade-up">
+    <div class="pillar fade-up" id="pillar-brand">
       <div class="pillar-header">
         <span class="pillar-num">02</span>
         <span class="pillar-name">Brand & Presence</span>
         <span class="pillar-tagline">Go from idea to real</span>
       </div>
       <div class="services-grid">
-        <div class="service-card">
+        <div class="service-card" onclick="document.getElementById('booking').scrollIntoView({behavior:'smooth'})" style="cursor:pointer;">
           <div class="service-problem">The problem: <span>"My brand exists in my head but nowhere else."</span></div>
           <h3 class="service-name">The Full Build</h3>
           <p class="service-desc">
@@ -943,11 +1089,11 @@
           </p>
           <div class="service-footer">
             <span class="service-format">Same-day delivery · Full handoff doc</span>
-            <span class="service-arrow">→</span>
+            <a href="#booking" class="service-arrow">→</a>
           </div>
         </div>
 
-        <div class="service-card">
+        <div class="service-card" onclick="document.getElementById('booking').scrollIntoView({behavior:'smooth'})" style="cursor:pointer;">
           <div class="service-problem">The problem: <span>"I have a site but it doesn't represent me."</span></div>
           <h3 class="service-name">The Presence Rebuild</h3>
           <p class="service-desc">
@@ -955,11 +1101,11 @@
           </p>
           <div class="service-footer">
             <span class="service-format">Strategy + execution · Delivered in 1–2 sessions</span>
-            <span class="service-arrow">→</span>
+            <a href="#booking" class="service-arrow">→</a>
           </div>
         </div>
 
-        <div class="service-card">
+        <div class="service-card" onclick="document.getElementById('booking').scrollIntoView({behavior:'smooth'})" style="cursor:pointer;">
           <div class="service-problem">The problem: <span>"I don't know how to explain what I do."</span></div>
           <h3 class="service-name">Brand Positioning & Voice</h3>
           <p class="service-desc">
@@ -967,21 +1113,21 @@
           </p>
           <div class="service-footer">
             <span class="service-format">Working session + written deliverable</span>
-            <span class="service-arrow">→</span>
+            <a href="#booking" class="service-arrow">→</a>
           </div>
         </div>
       </div>
     </div>
 
     <!-- PILLAR 3: CONTENT & GROWTH -->
-    <div class="pillar fade-up">
+    <div class="pillar fade-up" id="pillar-content">
       <div class="pillar-header">
         <span class="pillar-num">03</span>
         <span class="pillar-name">Content & Growth</span>
         <span class="pillar-tagline">Stop posting randomly. Start building something.</span>
       </div>
       <div class="services-grid">
-        <div class="service-card">
+        <div class="service-card" onclick="document.getElementById('booking').scrollIntoView({behavior:'smooth'})" style="cursor:pointer;">
           <div class="service-problem">The problem: <span>"I post but nothing sticks."</span></div>
           <h3 class="service-name">Content System Build</h3>
           <p class="service-desc">
@@ -989,11 +1135,11 @@
           </p>
           <div class="service-footer">
             <span class="service-format">Strategy session + 30-day framework delivered</span>
-            <span class="service-arrow">→</span>
+            <a href="#booking" class="service-arrow">→</a>
           </div>
         </div>
 
-        <div class="service-card">
+        <div class="service-card" onclick="document.getElementById('booking').scrollIntoView({behavior:'smooth'})" style="cursor:pointer;">
           <div class="service-problem">The problem: <span>"My LinkedIn/Instagram doesn't reflect my actual work."</span></div>
           <h3 class="service-name">Profile & Presence Overhaul</h3>
           <p class="service-desc">
@@ -1001,11 +1147,11 @@
           </p>
           <div class="service-footer">
             <span class="service-format">Audit + rewrite + 30-day plan</span>
-            <span class="service-arrow">→</span>
+            <a href="#booking" class="service-arrow">→</a>
           </div>
         </div>
 
-        <div class="service-card">
+        <div class="service-card" onclick="document.getElementById('booking').scrollIntoView({behavior:'smooth'})" style="cursor:pointer;">
           <div class="service-problem">The problem: <span>"I want to sell something but don't know how to launch it."</span></div>
           <h3 class="service-name">Digital Product Launch</h3>
           <p class="service-desc">
@@ -1013,21 +1159,21 @@
           </p>
           <div class="service-footer">
             <span class="service-format">Strategy to launch · Full setup included</span>
-            <span class="service-arrow">→</span>
+            <a href="#booking" class="service-arrow">→</a>
           </div>
         </div>
       </div>
     </div>
 
     <!-- PILLAR 4: OPERATIONS -->
-    <div class="pillar fade-up">
+    <div class="pillar fade-up" id="pillar-operations">
       <div class="pillar-header">
         <span class="pillar-num">04</span>
         <span class="pillar-name">Operations & Systems</span>
         <span class="pillar-tagline">Get out from under the chaos</span>
       </div>
       <div class="services-grid">
-        <div class="service-card">
+        <div class="service-card" onclick="document.getElementById('booking').scrollIntoView({behavior:'smooth'})" style="cursor:pointer;">
           <div class="service-problem">The problem: <span>"Everything runs through me and I can't step back."</span></div>
           <h3 class="service-name">Operating System Build</h3>
           <p class="service-desc">
@@ -1035,11 +1181,11 @@
           </p>
           <div class="service-footer">
             <span class="service-format">Audit + build + written SOPs</span>
-            <span class="service-arrow">→</span>
+            <a href="#booking" class="service-arrow">→</a>
           </div>
         </div>
 
-        <div class="service-card">
+        <div class="service-card" onclick="document.getElementById('booking').scrollIntoView({behavior:'smooth'})" style="cursor:pointer;">
           <div class="service-problem">The problem: <span>"Our nonprofit is rebuilding from scratch."</span></div>
           <h3 class="service-name">Nonprofit Rebuild Package</h3>
           <p class="service-desc">
@@ -1047,11 +1193,11 @@
           </p>
           <div class="service-footer">
             <span class="service-format">Multi-session engagement · Full documentation</span>
-            <span class="service-arrow">→</span>
+            <a href="#booking" class="service-arrow">→</a>
           </div>
         </div>
 
-        <div class="service-card">
+        <div class="service-card" onclick="document.getElementById('booking').scrollIntoView({behavior:'smooth'})" style="cursor:pointer;">
           <div class="service-problem">The problem: <span>"We're planning a big event and don't have a process."</span></div>
           <h3 class="service-name">Event Strategy & Launch</h3>
           <p class="service-desc">
@@ -1059,21 +1205,21 @@
           </p>
           <div class="service-footer">
             <span class="service-format">Strategy + playbook + promotional framework</span>
-            <span class="service-arrow">→</span>
+            <a href="#booking" class="service-arrow">→</a>
           </div>
         </div>
       </div>
     </div>
 
     <!-- PILLAR 5: AI INTEGRATION -->
-    <div class="pillar fade-up">
+    <div class="pillar fade-up" id="pillar-ai">
       <div class="pillar-header">
         <span class="pillar-num">05</span>
         <span class="pillar-name">AI Integration & Workflow</span>
         <span class="pillar-tagline">Use AI like someone who actually knows how</span>
       </div>
       <div class="services-grid">
-        <div class="service-card">
+        <div class="service-card" onclick="document.getElementById('booking').scrollIntoView({behavior:'smooth'})" style="cursor:pointer;">
           <div class="service-problem">The problem: <span>"I know AI could help but I don't know where to start."</span></div>
           <h3 class="service-name">AI Workflow Buildout</h3>
           <p class="service-desc">
@@ -1081,11 +1227,11 @@
           </p>
           <div class="service-footer">
             <span class="service-format">Audit + stack + hands-on implementation</span>
-            <span class="service-arrow">→</span>
+            <a href="#booking" class="service-arrow">→</a>
           </div>
         </div>
 
-        <div class="service-card">
+        <div class="service-card" onclick="document.getElementById('booking').scrollIntoView({behavior:'smooth'})" style="cursor:pointer;">
           <div class="service-problem">The problem: <span>"My content sounds like AI wrote it."</span></div>
           <h3 class="service-name">AI Writing System</h3>
           <p class="service-desc">
@@ -1093,11 +1239,11 @@
           </p>
           <div class="service-footer">
             <span class="service-format">Session + prompt library + voice guide</span>
-            <span class="service-arrow">→</span>
+            <a href="#booking" class="service-arrow">→</a>
           </div>
         </div>
 
-        <div class="service-card">
+        <div class="service-card" onclick="document.getElementById('booking').scrollIntoView({behavior:'smooth'})" style="cursor:pointer;">
           <div class="service-problem">The problem: <span>"My team doesn't know how to use AI responsibly."</span></div>
           <h3 class="service-name">Team AI Onboarding</h3>
           <p class="service-desc">
@@ -1105,7 +1251,7 @@
           </p>
           <div class="service-footer">
             <span class="service-format">Group session · Policy doc + staff guide delivered</span>
-            <span class="service-arrow">→</span>
+            <a href="#booking" class="service-arrow">→</a>
           </div>
         </div>
       </div>
@@ -1117,6 +1263,61 @@
       </p>
     </div>
 
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<!-- FREE RESOURCES -->
+<section class="resources-section" id="resources">
+  <div class="section-wrap">
+    <div class="resources-intro fade-up">
+      <div class="section-label">Free Guides</div>
+      <h2>Start here before you book anything.</h2>
+      <p>
+        Three free downloads built around the most common problems we see. Each one gives you something useful immediately — no email required, no strings attached.
+      </p>
+    </div>
+
+    <div class="resources-grid">
+
+      <a href="https://businesscasualww.gumroad.com/l/brand-brief" target="_blank" class="resource-card fade-up">
+        <div class="resource-tag">Brand & Presence</div>
+        <h3 class="resource-title">The One-Page Brand Brief</h3>
+        <p class="resource-desc">
+          Figure out what your brand actually is — in under an hour. Walk through your audience, your problem, your differentiator, and your one-liner. Leave with a completed brief you can use immediately.
+        </p>
+        <div class="resource-footer">
+          <span class="resource-free">Free Download →</span>
+          <span class="resource-arrow">↗</span>
+        </div>
+      </a>
+
+      <a href="https://businesscasualww.gumroad.com/l/bottleneck-audit" target="_blank" class="resource-card fade-up">
+        <div class="resource-tag">Operations & Systems</div>
+        <h3 class="resource-title">The Bottleneck Audit</h3>
+        <p class="resource-desc">
+          Find the three places your operation breaks without you — in 20 minutes. Identify exactly where your business is fragile and walk away with a prioritized list of what to fix first.
+        </p>
+        <div class="resource-footer">
+          <span class="resource-free">Free Download →</span>
+          <span class="resource-arrow">↗</span>
+        </div>
+      </a>
+
+      <a href="https://businesscasualww.gumroad.com/l/cant-do-it-all" target="_blank" class="resource-card fade-up">
+        <div class="resource-tag">Nonprofit Leaders</div>
+        <h3 class="resource-title">You Can't Do It All</h3>
+        <p class="resource-desc">
+          For nonprofit leaders carrying everything alone. Map your full workload, identify what doesn't have to be you, and build the confidence to finally make the ask.
+        </p>
+        <div class="resource-footer">
+          <span class="resource-free">Free Download →</span>
+          <span class="resource-arrow">↗</span>
+        </div>
+      </a>
+
+    </div>
   </div>
 </section>
 
